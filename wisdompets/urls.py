@@ -16,6 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from adoptions import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.home, name='home'),
+    #url(r'^adoptions/(/d+)/', views.pet_detail, name='pet_detail'), old way of doing it with regex?
+    path('adoptions/<int:id>', views.pet_detail, name='pet_detail'), #seems to be the better way (Django 2?)
 ]
